@@ -288,7 +288,7 @@ window.SmokeMachine = window.SmokeMachine || (function () {
   var DEFAULTS = {
     version: 1,
     canvas: {
-      width: 1280, height: 720, resolution: 1, background: '#13110e', transparent: true,
+      width: 1280, height: 720, resolution: 1, background: '#000000', transparent: false,
       timeScale: 1, windX: 8, windY: 0, maxParticles: 1500, seed: 7, warmup: 4,
       pointerForce: 0.6, pointerRadius: 160
     },
@@ -691,7 +691,7 @@ window.SmokeMachine = window.SmokeMachine || (function () {
   function readStore(key) { try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
   function writeStore(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
   var state = (function () { var s = readStore(STORE); try { return s ? E.normalize(s) : E.defaults(); } catch (e) { return E.defaults(); } })();
-  var ui = Object.assign({ previewBg: '', showGizmos: true, recordSeconds: 6, playing: true }, readStore(STORE_UI) || {});
+  var ui = Object.assign({ previewBg: '', showGizmos: false, recordSeconds: 6, playing: true }, readStore(STORE_UI) || {});
   if (ui.previewBg && ui.previewBg[0] !== '#') ui.previewBg = '';
   var selectedId = null, popId = null;
   var saveT = 0;
